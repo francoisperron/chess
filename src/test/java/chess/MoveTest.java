@@ -14,23 +14,23 @@ import static support.GameDriver.*;
 @Imhotep(level="UI")
 public class MoveTest {
 
-    GameFrame game;
+    GameFrame frame;
     GameDriver board;
 
     @Before public void
     showGame() {
-        game = new GameFrame();
-        game.setVisible( true );
+        frame = new GameFrame();
+        frame.setVisible(true);
         board = new GameDriver();
     }
     @After public void
     hideFrame() {
-        game.setVisible( false );
+        frame.setVisible(false);
     }
 
     @Test public void
     canMoveAPawn() {
-        game.display( aPawn().white().on( "e2" ).build() );
+        frame.display(aPawn().white().on("e2").build());
         board.cell( "e2" ).click();
         board.cell( "e4" ).click();
         board.has( pawn(), on( "e4" ) );
@@ -39,7 +39,7 @@ public class MoveTest {
 
     @Test public void
     canMoveAQueen() {
-        game.display( aQueen().black().on( "d5" ).build() );
+        frame.display(aQueen().black().on("d5").build());
         board.cell( "d5" ).click();
         board.cell( "h5" ).click();
         board.has( queen(), on( "h5" ) );
@@ -47,8 +47,8 @@ public class MoveTest {
 
     @Test public void
     canMoveSeveralPieces() throws InterruptedException {
-        game.display( aQueen().white().on( "d1" ).build(),
-                aPawn().white().on( "d2" ).build() );
+        frame.display(aQueen().white().on("d1").build(),
+                aPawn().white().on("d2").build());
 
         board.cell( "d1" ).click();
         board.cell( "g4" ).click();

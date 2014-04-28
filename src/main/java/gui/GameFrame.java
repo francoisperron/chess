@@ -1,5 +1,6 @@
 package gui;
 
+import chess.Game;
 import chess.Piece;
 import chess.Pieces;
 import gui.renderers.PieceRenderer;
@@ -15,6 +16,7 @@ public class GameFrame extends JFrame {
     public static final Color CELL_WHITE = new Color(240, 217, 181);
     public static final Color CELL_BLACK = new Color(181, 136, 99);
     private MoveCommand moveCommand;
+    private Game game = new Game();
 
     public GameFrame() {
         this.setName( TITLE );
@@ -34,8 +36,8 @@ public class GameFrame extends JFrame {
         this.createLine( 1 );
 
         selection = null;
-        pieces = new Pieces();
-        moveCommand = new MoveAndEat( this, pieces );
+
+        moveCommand = new MoveAndEat( this, game.Pieces() );
     }
 
     private void createLine(int line) {
@@ -79,7 +81,7 @@ public class GameFrame extends JFrame {
     private Piece selection;
     protected void clicked(JButton source) {
         if (selection == null) {
-            selection = pieces.getPieceWithPosition( source.getName() );
+            selection = game.Pieces().getPieceWithPosition(source.getName());
         }
         else {
             moveCommand.move( selection.getPosition(), source.getName() );
@@ -87,16 +89,16 @@ public class GameFrame extends JFrame {
         }
     }
 
-    private Pieces pieces;
+
     public Pieces getPieces() {
-        return pieces;
+        return game.Pieces();
     }
 
     public void display(Piece piece) {
         PieceRenderer renderer = new RendererFactory().rendererOf( piece );
         renderer.visit( getButtonNamed( piece.getPosition() ) );
-        if (!pieces.contains( piece )) {
-            pieces.add( piece );
+        if (!game.Pieces().contains(piece)) {
+            game.Pieces().add(piece);
         }
     }
     public void display(Piece... given) {
@@ -111,5 +113,13 @@ public class GameFrame extends JFrame {
 
     public void clearPosition(String initialPosition) {
         getButtonNamed( initialPosition ).setIcon( null );
+    }
+
+    public void render(Game game)
+    {
+        this.game = game;
+        setVisible(true);
+        display(game.Pieces().toArray(new Piece[]{}));
+
     }
 }

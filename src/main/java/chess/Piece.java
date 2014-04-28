@@ -1,6 +1,6 @@
 package chess;
 
-public class Piece {
+public abstract class Piece {
 
     private String position;
     private boolean white;
@@ -21,4 +21,10 @@ public class Piece {
         return white;
     }
 
+    @Override
+    public String toString()
+    {
+        String color = isWhite() ? "White " : "Black ";
+        return color + this.getClass().getSimpleName();
+    }
 }

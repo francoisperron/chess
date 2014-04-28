@@ -40,16 +40,10 @@ public class MoveAndEatTest {
     }
 
     @Test public void
-    eatsThePawn() {
-        assertThat( frame.getPieces().size(), equalTo( 2 ) );
-    }
-
-    @Test public void
     unlessThereIsNobodyOnTheTargetPosition() {
         moveCommand.move( "e5", "e3" );
 
         assertThat( pieces.getPieceWithPosition( "e3" ), instanceOf( Queen.class ) );
-        assertThat( pieces.size(), equalTo( 2 ) );
     }
 
     @Test public void

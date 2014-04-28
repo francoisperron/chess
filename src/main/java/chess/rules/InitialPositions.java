@@ -1,6 +1,9 @@
 package chess.rules;
 
 import chess.Piece;
+import chess.Pieces;
+
+import java.util.Collections;
 
 import static builders.BishopBuilder.aBishop;
 import static builders.KingBuilder.aKing;

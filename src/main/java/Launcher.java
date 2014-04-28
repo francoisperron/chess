@@ -1,3 +1,4 @@
+import chess.Game;
 import gui.GameFrame;
 
 import static chess.rules.InitialPositions.initialPositions;
@@ -5,9 +6,8 @@ import static chess.rules.InitialPositions.initialPositions;
 public class Launcher {
 
     public static void main(String... arg) {
-        GameFrame game = new GameFrame();
-        game.setVisible( true );
-
-        game.display( initialPositions() );
+        GameFrame frame = new GameFrame();
+        Game game = new Game();
+        frame.render(game);
     }
 }

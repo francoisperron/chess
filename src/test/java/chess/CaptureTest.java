@@ -10,6 +10,7 @@ import support.GameDriver;
 import static builders.PawnBuilder.aPawn;
 import static builders.QueenBuilder.aQueen;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 @Imhotep(level="UI")
@@ -41,7 +42,7 @@ public class CaptureTest {
 
         Thread.sleep(10);
 
-        assertThat( game.getPieces().size(), equalTo( 1 ) );
+        assertThat( game.getPieces().getPieceWithPosition("d7"), instanceOf(Queen.class) );
         
     }
 }

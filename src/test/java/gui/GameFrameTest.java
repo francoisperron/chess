@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@Imhotep(level="UI")
+@Imhotep(level="Unit")
 public class GameFrameTest {
 
     static GameFrame frame;
@@ -28,35 +28,6 @@ public class GameFrameTest {
     public static void
     showGame() {
         frame = new GameFrame();
-    }
-
-    @Test public void
-    gridLayout() {
-        assertThat( frame.getContentPane().getLayout(), instanceOf( GridLayout.class ) );
-    }
-    
-    @Test public void
-    allComponentsMustBeOpaque() {
-        Component[] all = frame.getContentPane().getComponents();
-        for( Component component : all) {
-            assertTrue( component.getName() + " should be opaque", component.isOpaque() );
-        }
-    }
-
-    @Test public void
-    allCellsMustHaveAnEmptyContentByDefault() {
-        Component[] all = frame.getContentPane().getComponents();
-        for( Component component : all) {
-            assertThat( ((JButton) component).getText(), equalTo( "" ) );
-        }
-    }
-
-    @Test public void
-    allCellsMustHaveAnEmptyImageByDefault() {
-        Component[] all = frame.getContentPane().getComponents();
-        for( Component component : all) {
-            assertThat( ((JButton) component).getIcon(), equalTo( null ) );
-        }
     }
 
     @Test public void

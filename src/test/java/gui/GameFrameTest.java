@@ -41,15 +41,6 @@ public class GameFrameTest {
     }
 
     @Test public void
-    recordPiecesPosition() {
-        Queen queen = aQueen().white().on( "d1" ).build();
-        Pawn pawn = aPawn().white().on( "d2" ).build();
-        frame.display( queen, pawn );
-        assertThat( frame.getPieces().getPieceWithPosition( "d1" ), instanceOf( Queen.class ) );
-        assertThat(frame.getPieces().getPieceWithPosition("d2"), instanceOf(Pawn.class));
-    }
-
-    @Test public void
     delegatesMoveActionToGame() {
         frame = new GameFrame();
         Game mockGame = mock(Game.class);

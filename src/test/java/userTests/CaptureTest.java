@@ -1,31 +1,30 @@
 package userTests;
 
-import chess.Queen;
 import gui.GameFrame;
 import imhotep.Imhotep;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import support.GameDriver;
+import support.PlayerDriver;
 
 import static builders.PawnBuilder.aPawn;
 import static builders.QueenBuilder.aQueen;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
+import static support.PlayerDriver.on;
+import static support.PlayerDriver.queen;
 
 @Imhotep(level="UI")
 public class CaptureTest {
 
     GameFrame game;
-    GameDriver board;
+    PlayerDriver player;
 
     @Before
     public void
     showGame() {
         game = new GameFrame();
         game.setVisible( true );
-        board = new GameDriver();
+        player = new PlayerDriver();
     }
     @After
     public void
@@ -34,16 +33,14 @@ public class CaptureTest {
     }
 
     @Test public void
-    canCapture() throws InterruptedException {
-        game.display( aQueen().white().on( "d1" ).build(),
+    canCapture() {
+        game.display(
+                aQueen().white().on( "d1" ).build(),
                 aPawn().black().on( "d7" ).build() );
 
-        board.cell( "d1" ).click();
-        board.cell( "d7" ).click();
+        player.cell("d1").click();
+        player.cell("d7").click();
 
-        Thread.sleep(10);
-
-        assertThat( game.getPieces().getPieceWithPosition("d7"), instanceOf(Queen.class) );
-        
+        player.seesAWhite(queen(), on("d7"));
     }
 }

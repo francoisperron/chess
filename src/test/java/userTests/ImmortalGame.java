@@ -4,7 +4,7 @@ import gui.GameFrame;
 import imhotep.Imhotep;
 import org.junit.Ignore;
 import org.junit.Test;
-import support.GameDriver;
+import support.PlayerDriver;
 
 import static chess.rules.InitialPositions.initialPositions;
 
@@ -12,14 +12,14 @@ import static chess.rules.InitialPositions.initialPositions;
 public class ImmortalGame {
 
     GameFrame game;
-    GameDriver board;
+    PlayerDriver player;
 
     @Ignore
     @Test public void
     playImmortalGame() throws InterruptedException {
         game = new GameFrame();
         game.setVisible( true );
-        board = new GameDriver();
+        player = new PlayerDriver();
         game.display( initialPositions() );
 
         play( "e2", "e4" ); play( "e7", "e5" );     //1
@@ -51,8 +51,8 @@ public class ImmortalGame {
     }
 
     private void play(String origin, String destination) {
-        board.cell( origin ).click();
-        board.cell( destination ).click();
+        player.cell(origin).click();
+        player.cell(destination).click();
     }
 
 }

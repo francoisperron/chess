@@ -51,10 +51,6 @@ public class GameFrame extends JFrame {
         }
     }
 
-    public Pieces getPieces() {
-        return game.Pieces();
-    }
-
     public void display(Piece piece) {
         PieceRenderer renderer = new RendererFactory().rendererOf(piece);
         renderer.visit(getButtonNamed(piece.getPosition()));

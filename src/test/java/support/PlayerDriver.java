@@ -15,10 +15,10 @@ import javax.swing.*;
 import static gui.GameFrame.TITLE;
 import static org.junit.internal.matchers.StringContains.containsString;
 
-public class GameDriver extends JFrameDriver {
+public class PlayerDriver extends JFrameDriver {
 
     @SuppressWarnings("unchecked")
-    public GameDriver() {
+    public PlayerDriver() {
         super(new GesturePerformer(), new AWTEventQueueProber(), named( TITLE ), showingOnScreen());
         ((AWTEventQueueProber) prober()).setTimeout( 100 );
     }
@@ -51,7 +51,7 @@ public class GameDriver extends JFrameDriver {
         button( location ).hasIcon( containsString( "black" ) );
     }
 
-    public void hasWhite(String pieceName, String location) {
+    public void seesAWhite(String pieceName, String location) {
         has(pieceName, location);
         button( location ).hasIcon( containsString( "white" ) );
     }

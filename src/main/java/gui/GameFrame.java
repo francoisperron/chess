@@ -37,7 +37,7 @@ public class GameFrame extends JFrame {
 
         selection = null;
 
-        moveCommand = new MoveAndEat( this, game.Pieces() );
+        moveCommand = new MoveAndEat(game.Pieces() );
     }
 
     private void createLine(int line) {
@@ -84,11 +84,16 @@ public class GameFrame extends JFrame {
             selection = source.getName();
         }
         else {
-            moveCommand.move( game.Pieces().getPieceWithPosition(selection).getPosition(), source.getName() );
+            Piece piece = game.Pieces().getPieceWithPosition(selection);
+            String initialPosition = piece.getPosition();
+
+            moveCommand.move(initialPosition, source.getName());
+
+            clearPosition(initialPosition);
+            display(piece);
             selection = null;
         }
     }
-
 
     public Pieces getPieces() {
         return game.Pieces();

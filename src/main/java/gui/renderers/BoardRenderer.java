@@ -41,7 +41,7 @@ public class BoardRenderer
 
     private String letterOf(char column)
     {
-        return new Character((char) (97 + column)).toString();
+        return Character.toString((char) (97 + column));
     }
 
     private void create(String name, Color color)

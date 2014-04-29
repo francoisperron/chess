@@ -1,6 +1,8 @@
 package gui;
 
+import chess.Game;
 import chess.Pawn;
+import chess.Pieces;
 import chess.Queen;
 import imhotep.Imhotep;
 import org.junit.Before;
@@ -18,6 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @Imhotep(level="Unit")
 public class GameFrameTest {
@@ -26,13 +29,8 @@ public class GameFrameTest {
 
     @BeforeClass
     public static void
-    showGame() {
+    theFrame() {
         frame = new GameFrame();
-    }
-
-    @Test public void
-    createTheALetterFromIntValue97() {
-        assertThat( new Character( (char) 97 ).toString(), equalTo( "a" ));
     }
     
     @Test public void
@@ -45,14 +43,16 @@ public class GameFrameTest {
     }
 
     @Test public void
-    delegatesMoveActionToMoveCommand() {
-        MoveCommand moveMoveCommand = mock( MoveCommand.class );
-        frame.setMoveCommand( moveMoveCommand );
+    delegatesMoveActionToGame() {
+        frame = new GameFrame();
+        Game mockGame = mock(Game.class);
+        when(mockGame.Pieces()).thenReturn(new Pieces());
+
+        frame.render(mockGame);
         frame.display( aQueen().black().on( "d5" ).build() );
         frame.clicked( frame.getButtonNamed( "d5" ) );
         frame.clicked( frame.getButtonNamed( "e5" ) );
 
-        verify( moveMoveCommand ).move( "d5", "e5" );
+        verify( mockGame ).move( "d5", "e5" );
     }
-    
 }

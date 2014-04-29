@@ -3,7 +3,6 @@ package gui;
 import chess.Game;
 import chess.Piece;
 import chess.Pieces;
-import chess.rules.MoveAndEat;
 import gui.renderers.BoardRenderer;
 import gui.renderers.PieceRenderer;
 
@@ -14,7 +13,6 @@ public class GameFrame extends JFrame {
 
     public static final String TITLE = "Chess";
     private String selection = null;
-    private MoveCommand moveCommand;
     private Game game = new Game();
 
     public GameFrame() {
@@ -24,8 +22,6 @@ public class GameFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         new BoardRenderer().renderOn(this);
-
-        moveCommand = new MoveAndEat(game.Pieces());
     }
 
     public JButton getButtonNamed(String name) {
@@ -45,7 +41,9 @@ public class GameFrame extends JFrame {
             Piece piece = game.Pieces().getPieceWithPosition(selection);
             String initialPosition = piece.getPosition();
 
-            moveCommand.move(initialPosition, source.getName());
+            String targetPosition = source.getName();
+            game.move(initialPosition, targetPosition);
+
 
             clearPosition(initialPosition);
             display(piece);
@@ -71,9 +69,6 @@ public class GameFrame extends JFrame {
         }
     }
 
-    public void setMoveCommand(MoveCommand moveCommand) {
-        this.moveCommand = moveCommand;
-    }
 
     public void clearPosition(String initialPosition) {
         getButtonNamed(initialPosition).setIcon(null);

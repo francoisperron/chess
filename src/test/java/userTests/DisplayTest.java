@@ -1,4 +1,4 @@
-package chess;
+package userTests;
 
 import gui.GameFrame;
 import imhotep.Imhotep;

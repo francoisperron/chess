@@ -1,3 +1,5 @@
+package userTests;
+
 import gui.GameFrame;
 import imhotep.Imhotep;
 import org.junit.Ignore;

@@ -1,5 +1,6 @@
-package chess;
+package userTests;
 
+import chess.Queen;
 import gui.GameFrame;
 import imhotep.Imhotep;
 import org.junit.After;

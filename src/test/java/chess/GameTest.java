@@ -14,12 +14,12 @@ public class GameTest
     private Game game;
 
     @Before public void
-    aGame() {
+    aNewGame() {
         game = new Game();
     }
 
     @Test public void
-    placePiecesOnInitialPositionsOnCreation() {
+    placePiecesOnInitialPositions() {
         Pieces pieces = new Pieces();
         Collections.addAll(pieces, initialPositions());
 

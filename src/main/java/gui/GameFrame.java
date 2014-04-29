@@ -78,13 +78,13 @@ public class GameFrame extends JFrame {
         return null;
     }
 
-    private Piece selection;
+    private String selection;
     protected void clicked(JButton source) {
         if (selection == null) {
-            selection = game.Pieces().getPieceWithPosition(source.getName());
+            selection = source.getName();
         }
         else {
-            moveCommand.move( selection.getPosition(), source.getName() );
+            moveCommand.move( game.Pieces().getPieceWithPosition(selection).getPosition(), source.getName() );
             selection = null;
         }
     }
@@ -119,7 +119,7 @@ public class GameFrame extends JFrame {
     {
         this.game = game;
         setVisible(true);
-        display(game.Pieces().toArray(new Piece[]{}));
 
+        display(game.Pieces().toArray(new Piece[]{}));
     }
 }

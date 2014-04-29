@@ -1,13 +1,21 @@
+package application;
+
 import chess.Game;
 import gui.GameFrame;
 
 import static chess.rules.InitialPositions.initialPositions;
 
-public class Launcher {
+public class Application {
+
+    private static GameFrame frame;
 
     public static void main(String... arg) {
-        GameFrame frame = new GameFrame();
+        frame = new GameFrame();
         Game game = new Game();
         frame.render(game);
+    }
+
+    public static void close(){
+        frame.dispose();
     }
 }

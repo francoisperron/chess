@@ -59,14 +59,7 @@ public class GameFrame extends JFrame {
         }
     }
 
-    public void display(Piece... given) {
-        for (Piece piece : given) {
-            display(piece);
-        }
-    }
-
-
-    public void clearPosition(String initialPosition) {
+    private void clearPosition(String initialPosition) {
         getButtonNamed(initialPosition).setIcon(null);
     }
 
@@ -74,6 +67,12 @@ public class GameFrame extends JFrame {
         this.game = game;
         setVisible(true);
 
-        display(game.Pieces().toArray(new Piece[]{}));
+        display(game.Pieces());
+    }
+
+    private void display(Pieces pieces) {
+        for (Piece piece : pieces) {
+            display(piece);
+        }
     }
 }

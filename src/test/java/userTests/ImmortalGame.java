@@ -1,26 +1,15 @@
 package userTests;
 
-import gui.GameFrame;
 import imhotep.Imhotep;
 import org.junit.Ignore;
 import org.junit.Test;
-import support.PlayerDriver;
 
-import static chess.rules.InitialPositions.initialPositions;
-
-@Imhotep(level="UI")
-public class ImmortalGame {
-
-    GameFrame game;
-    PlayerDriver player;
+@Imhotep(level="User")
+public class ImmortalGame extends UserTest {
 
     @Ignore
     @Test public void
     playImmortalGame() throws InterruptedException {
-        game = new GameFrame();
-        game.setVisible( true );
-        player = new PlayerDriver();
-        game.display( initialPositions() );
 
         play( "e2", "e4" ); play( "e7", "e5" );     //1
         play( "f2", "f4" ); play( "e5", "f4" );
@@ -47,7 +36,6 @@ public class ImmortalGame {
         play( "d6", "e7");
 
         Thread.sleep( 3000 );
-        game.setVisible( false );
     }
 
     private void play(String origin, String destination) {

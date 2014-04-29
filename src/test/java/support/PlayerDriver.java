@@ -46,7 +46,7 @@ public class PlayerDriver extends JFrameDriver {
         button( location ).hasIcon( containsString( pieceName ) );
     }
 
-    public void hasBlack(String pieceName, String location) {
+    public void seesABlack(String pieceName, String location) {
         has(pieceName, location);
         button( location ).hasIcon( containsString( "black" ) );
     }
@@ -72,5 +72,8 @@ public class PlayerDriver extends JFrameDriver {
         return new RoockRenderer( null ).toString();
     }
 
+    public void seesTitle(String title) {
+        hasTitle(title);
+    }
 }
 

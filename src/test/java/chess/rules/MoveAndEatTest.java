@@ -3,8 +3,6 @@ package chess.rules;
 import chess.Game;
 import chess.Pieces;
 import chess.Queen;
-import gui.GameFrame;
-import gui.MoveAndEat;
 import imhotep.Imhotep;
 import org.junit.Before;
 import org.junit.Test;

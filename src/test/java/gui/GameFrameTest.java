@@ -4,6 +4,7 @@ import chess.Pawn;
 import chess.Queen;
 import imhotep.Imhotep;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.swing.*;
@@ -18,13 +19,13 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@Imhotep(level="Unit")
+@Imhotep(level="UI")
 public class GameFrameTest {
 
-    GameFrame frame;
+    static GameFrame frame;
 
-    @Before
-    public void
+    @BeforeClass
+    public static void
     showGame() {
         frame = new GameFrame();
     }

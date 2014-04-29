@@ -30,7 +30,7 @@
             <fileset dir="${src.dir}/gui/renderers"/>
         </copy>
         <javac includeAntRuntime="false" srcdir="src/test/java" destdir="target/test-classes"
-               classpath="${result.classes.dir}; lib/junit.jar; lib/hamcrest-all-1.2.jar; lib/mockito-all-1.8.5.jar; lib/windowlicker-core-DEV.jar; lib/windowlicker-swing-DEV.jar" />
+               classpath="${result.classes.dir}; lib/junit.jar; lib/imhotep-20140319.jar;lib/hamcrest-all-1.2.jar; lib/mockito-all-1.8.5.jar; lib/windowlicker-core-DEV.jar; lib/windowlicker-swing-DEV.jar" />
     </target>
 
     <target name="test" depends="compile">
@@ -40,6 +40,7 @@
                 <classpath>
                     <pathelement location="lib/junit.jar"/>
                     <pathelement location="lib/hamcrest-all-1.2.jar"/>
+                    <pathelement location="lib/imhotep-20140319.jar"/>
                     <pathelement location="lib/mockito-all-1.8.5.jar"/>
                     <pathelement location="lib/windowlicker-core-DEV.jar"/>
                     <pathelement location="lib/windowlicker-swing-DEV.jar"/>

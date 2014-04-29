@@ -3,6 +3,7 @@ package gui;
 import chess.Game;
 import chess.Piece;
 import chess.Pieces;
+import chess.rules.MoveAndEat;
 import gui.renderers.PieceRenderer;
 
 import javax.swing.*;

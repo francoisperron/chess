@@ -1,7 +1,8 @@
-package gui;
+package chess.rules;
 
 import chess.Piece;
 import chess.Pieces;
+import gui.MoveCommand;
 
 public class MoveAndEat implements MoveCommand
 {

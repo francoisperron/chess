@@ -10,7 +10,7 @@ import java.util.Collections;
 
 import static chess.rules.InitialPositions.initialPositions;
 
-@Imhotep(level="Domain")
+@Imhotep(level="Rule")
 public class InitialPositionsTest {
 
     private Pieces pieces;
